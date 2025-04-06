@@ -14,7 +14,7 @@ To debug the MCP server:
 
 1. Run the in-memory debug script:
 
-```
+```bash
 $ deno task debug-mcp
 ```
 
@@ -35,7 +35,7 @@ Design tokens are stored as JSON files in the `src/design-system/tokens` directo
 
 ### Token Generation Process
 
-Tokens are processed using Style Dictionary with the following workflow:
+Tokens are processed using [Style Dictionary](https://amzn.github.io/style-dictionary/#/) with the following workflow:
 
 1. Define token values in JSON files in the `tokens` directory
 2. Style Dictionary processes these tokens according to the configuration in `src/design-system/style-dictionary/config.json`
@@ -46,7 +46,7 @@ Tokens are processed using Style Dictionary with the following workflow:
 
 To generate tokens:
 
-```
+```bash
 $ deno task build-tokens
 ```
 
