@@ -1,0 +1,13 @@
+{
+  "text": {
+    "xs": { "value": "0.625rem", "attributes": { "note": "10px" } },
+    "sm": { "value": "0.75rem", "attributes": { "note": "12px" } },
+    "md": { "value": "0.875rem", "attributes": { "note": "14px" } },
+    "base": { "value": "1rem", "attributes": { "note": "16px" } },
+    "lg": { "value": "1.25rem", "attributes": { "note": "20px" } },
+    "xl": { "value": "1.5rem", "attributes": { "note": "24px" } },
+    "2xl": { "value": "2rem", "attributes": { "note": "32px" } },
+    "3xl": { "value": "2.5rem", "attributes": { "note": "40px" } },
+    "4xl": { "value": "3rem", "attributes": { "note": "48px" } }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "radius": {
+    "xs": { "value": "2px", "attributes": { "note": "2px" } },
+    "sm": { "value": "4px", "attributes": { "note": "4px" } },
+    "md": { "value": "8px", "attributes": { "note": "8px" } },
+    "lg": { "value": "16px", "attributes": { "note": "16px" } },
+    "xl": { "value": "32px", "attributes": { "note": "32px" } },
+    "full": { "value": "9999px", "attributes": { "note": "rounded" } }
+  }
+}

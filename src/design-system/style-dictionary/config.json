@@ -1,0 +1,38 @@
+{
+  "source": ["src/design-system/tokens/**/*.json"],
+  "platforms": {
+    "css": {
+      "transformGroup": "css",
+      "buildPath": "src/design-system/style-dictionary/dist/",
+      "files": [
+        {
+          "destination": "tokens.css",
+          "format": "css/variables",
+          "options": {
+            "outputReferences": true
+          }
+        }
+      ]
+    },
+    "js": {
+      "buildPath": "src/design-system/style-dictionary/dist/",
+      "transforms": ["attribute/cti", "size/rem", "color/hex8"],
+      "files": [
+        {
+          "destination": "tokens.js",
+          "format": "javascript/module"
+        }
+      ]
+    },
+    "ts": {
+      "transformGroup": "js",
+      "buildPath": "src/design-system/style-dictionary/dist/",
+      "files": [
+        {
+          "destination": "tokens.d.ts",
+          "format": "typescript/module-declarations"
+        }
+      ]
+    }
+  }
+}
