@@ -2,7 +2,7 @@ import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { server } from './server.ts';
 
-// クライアントを作成
+// Create client
 const client = new Client(
   {
     name: 'design-system-client',
@@ -13,17 +13,17 @@ const client = new Client(
   }
 );
 
-// トランスポートを作成
+// Create transport
 const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
 
-// サーバーとクライアントを接続
+// Connect server and client
 async function main() {
   await Promise.all([
     client.connect(clientTransport),
     server.connect(serverTransport),
   ]);
 
-  // コンポーネントのProps情報を取得
+  // Get component Props information
   const getComponentPropsResult = await client.callTool({
     name: 'getComponentProps',
     arguments: {
@@ -35,13 +35,13 @@ async function main() {
     name: 'getTokens',
   });
 
-  console.log('getComponentPropsの結果:', getComponentPropsResult);
-  console.log('getTokensの結果:', getTokensResult);
+  console.log('getComponentProps result:', getComponentPropsResult);
+  console.log('getTokens result:', getTokensResult);
 
   Deno.exit(0);
 }
 
 main().catch((error) => {
-  console.error('エラーが発生しました:', error);
+  console.error('An error occurred:', error);
   Deno.exit(1);
 });

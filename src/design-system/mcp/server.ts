@@ -12,11 +12,11 @@ import {
 } from 'https://deno.land/std@0.190.0/path/mod.ts';
 import { exists } from 'https://deno.land/std@0.190.0/fs/exists.ts';
 
-// 現在のディレクトリパスを取得
+// Get current directory path
 const __dirname = dirname(fromFileUrl(import.meta.url));
 const projectRoot = resolve(__dirname, '../..');
 
-// MCPサーバーの作成
+// Create MCP server
 export const server = new McpServer({
   name: 'DesignSystem',
   version: '1.0.0',
@@ -30,9 +30,7 @@ server.tool('getComponentProps', { name: z.string() }, async ({ name }) => {
 
     if (!(await exists(filePath))) {
       return {
-        content: [
-          { type: 'text', text: `コンポーネント ${name} が見つかりません` },
-        ],
+        content: [{ type: 'text', text: `Component ${name} not found` }],
         isError: true,
       };
     }
@@ -45,7 +43,7 @@ server.tool('getComponentProps', { name: z.string() }, async ({ name }) => {
 
     if (!typeAlias) {
       return {
-        content: [{ type: 'text', text: 'Props型が見つかりません' }],
+        content: [{ type: 'text', text: 'Props type not found' }],
         isError: true,
       };
     }
@@ -54,7 +52,7 @@ server.tool('getComponentProps', { name: z.string() }, async ({ name }) => {
 
     if (!properties) {
       return {
-        content: [{ type: 'text', text: 'Props型にプロパティがありません' }],
+        content: [{ type: 'text', text: 'No properties found in Props type' }],
         isError: true,
       };
     }
@@ -91,7 +89,7 @@ server.tool('getComponentProps', { name: z.string() }, async ({ name }) => {
       content: [
         {
           type: 'text',
-          text: `エラー: ${
+          text: `Error: ${
             error instanceof Error ? error.message : String(error)
           }`,
         },
@@ -101,7 +99,7 @@ server.tool('getComponentProps', { name: z.string() }, async ({ name }) => {
   }
 });
 
-// トークン情報取得ツール
+// Tool for retrieving token information
 server.tool('getTokens', async () => {
   try {
     const tokensDir = join(projectRoot, 'design-system/tokens');
@@ -129,13 +127,13 @@ server.tool('getTokens', async () => {
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     return {
-      content: [{ type: 'text', text: `エラー: ${errorMessage}` }],
+      content: [{ type: 'text', text: `Error: ${errorMessage}` }],
       isError: true,
     };
   }
 });
 
-// 標準入出力でメッセージを送受信
+// Send and receive messages via standard input/output
 const transport = new StdioServerTransport();
 await server.connect(transport);
 
